@@ -1,0 +1,27 @@
+version: "3"
+services:
+  mongo:
+    image: "mongo:3"
+    expose:
+      - "27017"
+  mail:
+    build:
+      context: ./
+      dockerfile: ./mongomail_mail/Dockerfile
+    image: "mongomail_mail"
+    links:
+      - mongo
+    ports:
+      - "8025:8025"
+    stdin_open: true
+    tty: true
+  web:
+    build:
+      context: ./
+      dockerfile: ./mongomail_rest/Dockerfile
+    image: "mongomail_rest"
+    links:
+      - mongo
+    ports:
+      - "80:80"
+      - "443:443"
