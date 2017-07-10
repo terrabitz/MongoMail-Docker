@@ -11,3 +11,4 @@ ENV PYTHONPATH="/app"
 RUN rm /app/mongomail/config.py && \
     rm /app/main.py
 COPY ./docker-config.py /app/mongomail/config.py
+COPY ./uwsgi.ini /app/uwsgi.ini
