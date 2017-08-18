@@ -14,7 +14,7 @@ services:
     links:
       - mongo
     ports:
-      - "8025:8025"
+      - "25:25"
     stdin_open: true
     tty: true
   web:
